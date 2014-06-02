@@ -23,7 +23,9 @@
 				{
 					canvas.onmousedown = null;
 					
-					Mobile.enable();
+					var gestureHandler = Mobile.enable();
+					
+					gestureHandler.setFocusElement(canvas);
 				}
 				
 				load_game(element, id, settings);
