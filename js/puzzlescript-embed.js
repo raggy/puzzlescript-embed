@@ -14,7 +14,7 @@
 		clear_children(element);
 		canvas = create_game_canvas(element, settings);
 
-        return load_engine(element, id, settings, function()
+		return load_engine(element, id, settings, function()
 		{
 			window.canSetHTMLColors = false;
 
@@ -60,8 +60,7 @@
 		script.setAttribute("src", settings.engine);
 		script.addEventListener('load', onload, false);
 		document.body.appendChild(script);
-
-        return script;
+		return script;
 	}
 
 	function load_game(element, id, settings, callback)
