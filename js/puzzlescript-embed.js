@@ -18,13 +18,13 @@
 		{
 			window.canSetHTMLColors = false;
 
-			if (Mobile.hasTouch())
+			if (document.documentElement && document.documentElement.ontouchstart !== undefined)
 			{
 				canvas.onmousedown = function()
 				{
 					canvas.onmousedown = null;
 
-					var gestureHandler = Mobile.enable();
+					var gestureHandler = Mobile.enable(true);
 
 					gestureHandler.setFocusElement(canvas);
 				}
