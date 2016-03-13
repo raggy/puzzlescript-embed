@@ -1,8 +1,6 @@
 (function()
 {
-	window.PuzzleScript = window.PuzzleScript || { };
-
-	window.PuzzleScript.embed = function(element, id, config)
+	function embed(element, id, config)
 	{
 		var canvas,
 			settings =
@@ -36,7 +34,7 @@
 				load_game(element, id, settings);
 			}
 		});
-	};
+	}
 
 	function clear_children(element)
 	{
@@ -99,5 +97,26 @@
 
 		return target;
 	}
+
+	function auto_embed()
+	{
+		var element = document.querySelector("*[data-puzzlescript]");
+
+		if (element != null)
+		{
+			var config = { };
+
+			if (element.dataset.puzzlescriptJs != undefined)
+			{
+				config.engine = element.dataset.puzzlescriptJs;
+			}
+
+			embed(element, element.dataset.puzzlescript, config);
+		}
+	}
+
+	window.PuzzleScript = window.PuzzleScript || { embed: embed };
+
+	window.addEventListener("load", auto_embed);
 
 })();
